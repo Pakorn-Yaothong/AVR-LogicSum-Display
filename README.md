@@ -1,7 +1,7 @@
-AVR LogicSum Display
+##AVR LogicSum Display
 This project demonstrates a simple digital adder implemented on an ATmega328P microcontroller using AVR Assembly. It reads the status of multiple digital switches (logic high inputs), calculates their sum, and displays the result on a 2-digit 7-segment display. The input changes are handled efficiently via external interrupt (INT0).
 
-Features
+##Features
 Logic Input Summation: Counts the number of active (logic high) digital inputs from a DIP switch or similar source.
 2-Digit 7-Segment Display: Shows the calculated sum, ranging from 0 to 99.
 Interrupt-Driven Input: Utilizes External Interrupt 0 (INT0) for responsive detection of input changes, ensuring the display updates promptly without continuous polling.
@@ -14,7 +14,8 @@ Display Logic: The accumulated total is then split into tens and units digits.
 7-Segment Output: These digits are mapped to the appropriate segments of a 7-segment display and outputted via PORTD and PORTB (to control individual digits and segments).
 Interrupt Handling: An external interrupt on INT0 (PD2) is configured to detect any change in the input switches. When a change occurs, the system resets the summation process and re-reads the inputs, ensuring the display is always up-to-date.
 Debouncing (Software): While not explicitly a dedicated debouncing routine, the interrupt-driven approach with a slight delay in the main loop helps mitigate some bounce effects by not reacting to every transient signal immediately.
-Hardware Requirements
+
+##Hardware Requirements
 ATmega328P Microcontroller (or compatible AVR)
 2-digit Common Cathode 7-Segment Display
 Current Limiting Resistors for the 7-segment display segments
@@ -31,7 +32,7 @@ PD2 (INT0): Connected to an input switch (e.g., a reset button or the main input
 Assembly and Flashing
 Assemble the code:
 
-Bash
+#Bash
 
 avr-gcc -mmcu=atmega328p -DF_CPU=16000000UL -x assembler-with-cpp -c your_project_name.asm -o your_project_name.o
 avr-objcopy -O ihex your_project_name.o your_project_name.hex
